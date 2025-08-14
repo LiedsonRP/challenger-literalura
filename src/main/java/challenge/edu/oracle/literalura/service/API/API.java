@@ -19,14 +19,19 @@ public class API {
         HttpResponse<String> response = null;
 
         try {
-            response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            response = client
+                    .send(request, HttpResponse.BodyHandlers.ofString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
+        System.out.println("recebi dados da API");
         String json = response.body();
+
+        System.out.println(json);
+
         return json;
     }
 }

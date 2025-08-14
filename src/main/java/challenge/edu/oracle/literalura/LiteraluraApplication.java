@@ -1,5 +1,6 @@
 package challenge.edu.oracle.literalura;
 
+import challenge.edu.oracle.literalura.dto.GutembergBookData;
 import challenge.edu.oracle.literalura.service.API.GutenbergAPIService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,8 +15,10 @@ public class LiteraluraApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        System.out.println("começou");
         GutenbergAPIService api = new GutenbergAPIService();
-        api.getBookAuthorData("moby dick");
+        GutembergBookData dados = api.getBookAuthorData("moby dick");
+
+        System.out.println(dados.toString());
     }
 }
