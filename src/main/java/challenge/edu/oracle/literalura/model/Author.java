@@ -23,7 +23,7 @@ public class Author {
     @Column(name = "death_year")
     private String deathYear;
 
-    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Book> booksWrited;
 
     public Author(){}
@@ -65,12 +65,27 @@ public class Author {
         this.deathYear = deathYear;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Book> getBooksWrited() {
+        return booksWrited;
+    }
+
+    public void setBooksWrited(List<Book> booksWrited) {
+        booksWrited.forEach(b -> b.setAuthor(this));
+        this.booksWrited = booksWrited;
+    }
+
     @Override
     public String toString() {
-        return "Author{" +
-                "name='" + name + '\'' +
+        return  "--------------------\nname='" + name + '\'' +
                 ", birthYear='" + birthYear + '\'' +
-                ", deathYear='" + deathYear + '\'' +
-                '}';
+                ", deathYear='" + deathYear;
     }
 }

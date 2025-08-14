@@ -25,7 +25,7 @@ public enum Language {
         List<Language> languages = Arrays.stream(Language.values()).toList();
 
         Optional<Language> languageFinded = languages.stream()
-                .filter(l -> l.symbol.equals(symbol))
+                .filter(l -> l.symbol.equals(symbol.toLowerCase()))
                 .findFirst();
 
         if (languageFinded.isPresent()) {
@@ -33,5 +33,13 @@ public enum Language {
         } else {
             throw new RuntimeException("Linguagem não encontrada no sistema.");
         }
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public String getName() {
+        return name;
     }
 }

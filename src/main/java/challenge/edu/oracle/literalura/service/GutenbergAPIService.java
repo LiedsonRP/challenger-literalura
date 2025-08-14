@@ -7,12 +7,13 @@ import challenge.edu.oracle.literalura.service.API.JSONConverter;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.util.NoSuchElementException;
 
 public class GutenbergAPIService {
 
     private static final String API_URL = "https://gutendex.com/books/?search=";
 
-    public GutembergBookData getBookAuthorData(String bookName) {
+    public GutembergBookData getBookAuthorData(String bookName) throws NoSuchElementException {
 
         API api = new API();
         JSONConverter jsonConverter = new JSONConverter();

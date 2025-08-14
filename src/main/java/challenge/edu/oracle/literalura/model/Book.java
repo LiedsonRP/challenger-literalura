@@ -24,7 +24,7 @@ public class Book {
     @Column(name = "download_number")
     private Integer downloadNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
     private Author author;
 
@@ -44,6 +44,14 @@ public class Book {
         this.language = Language.getLanguageBySimbol(data.languages().getFirst());
         this.downloadNumber = data.dowloadNumber();
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -80,11 +88,9 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book{" +
-                "title='" + title + '\'' +
-                ", author=" + author +
-                ", language=" + language +
-                ", downloadNumber=" + downloadNumber +
-                '}';
+        return "------------------------\ntitle ='" + title + '\'' +
+                ", author =" + author.getName() +
+                ", language =" + language.getName() +
+                ", downloadNumber =" + downloadNumber;
     }
 }
