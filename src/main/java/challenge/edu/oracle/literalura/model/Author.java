@@ -1,15 +1,29 @@
 package challenge.edu.oracle.literalura.model;
 
 import challenge.edu.oracle.literalura.dto.GutembergAuthorData;
+import com.sun.source.doctree.EscapeTree;
+import jakarta.persistence.*;
 
 import java.util.List;
 
+@Table(name = "authors")
+@Entity
 public class Author {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "birth_year")
     private String birthYear;
+
+    @Column(name = "death_year")
     private String deathYear;
+
+    @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Book> booksWrited;
 
     public Author(){}

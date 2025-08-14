@@ -1,16 +1,32 @@
 package challenge.edu.oracle.literalura.model;
 
 import challenge.edu.oracle.literalura.dto.GutembergBookData;
+import jakarta.persistence.*;
+
 
 import java.util.List;
 
+@Table(name = "books")
+@Entity
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name="title")
     private String title;
-    private Author author;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "language")
     private Language language;
+
+    @Column(name = "download_number")
     private Integer downloadNumber;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id")
+    private Author author;
 
     public Book() {}
 

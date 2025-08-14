@@ -1,7 +1,9 @@
-package challenge.edu.oracle.literalura.service.API;
+package challenge.edu.oracle.literalura.service;
 
 import challenge.edu.oracle.literalura.dto.GutembergResponseData;
 import challenge.edu.oracle.literalura.dto.GutembergBookData;
+import challenge.edu.oracle.literalura.service.API.API;
+import challenge.edu.oracle.literalura.service.API.JSONConverter;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
